@@ -1,0 +1,1009 @@
+    Experiment 1
+Week 1
+Installing R and R Studio Basic functionality of R, variable, data types in R
+Installing R and R Studio
+Step – 1: Go to CRAN R Project Website. 
+Step – 2: Click on the Download for (Mac) OS X link. 
+Step – 3: Click on the link for the pkg file of the latest R version and save it.
+Step – 4: Double click the downloaded file and follow installation instructions.
+Local Environment Setup
+If you are still willing to set up your environment for R, you can follow the steps given below.
+Windows Installation
+* You can download the Windows installer version of R from R-3.2.2 for Windows (32/64 bit) and save it in a local directory.
+* As it is a Windows installer (.exe) with a name "R-version-win.exe". You can just double click and run the installer accepting the default settings. If your Windows is 32-bit version, it installs the 32-bit version. But if your windows is 64-bit, then it installs both the 32-bit and 64-bit versions.
+* After installation you can locate the icon to run the Program in a directory structure "R\R3.2.2\bin\i386\Rgui.exe" under the Windows Program Files. Clicking this icon brings up the R-GUI which is the R console to do R Programming.
+Linux Installation
+* R is available as a binary for many versions of Linux at the location R Binaries.
+* The instruction to install Linux varies from flavor to flavor. These steps are mentioned under each type of Linux version in the mentioned link. However, if you are in a hurry, then you can use yum command to install R as follows ?
+* $ yum install R
+* Above command will install core functionality of R programming along with standard packages, still you need additional package, then you can launch R prompt as follows ?
+* $ R
+* R version 3.2.0 (2015-04-16) -- "Full of  Ingredients"   
+       
+* Copyright (C) 2015 The R Foundation for Statistical Computing
+* Platform: x86_64-redhat-linux-gnu (64-bit)
+* R is free software and comes with ABSOLUTELY NO WARRANTY.
+* You are welcome to redistribute it under certain conditions
+* Type 'license()' or 'licence()' for distribution details
+* R is a collaborative project with many  contributors.                  
+* Type 'contributors()' for more information and
+* 'citation()' on how to cite R or R packages in publications.
+* Type 'demo()' for some demos, 'help()' for on-line help, or
+* 'help.start()' for an HTML browser interface to help.
+* Type 'q()' to quit R.
+* Now you can use install command at R prompt to install the required package. For example, the following command will install plotrix package which is required for 3D charts.
+* > install.packages("plotrix")
+Introduction to RStudio
+1. Installation of RStudio
+If you have used  RStudio before, I recommend uninstalling the old versions and installing the latest version of RStudio since some libraries that we’ll install might not be compatible with older versions of R.
+2.2 Install the latest RStudio
+RStudio provides a friendlier working environment for R
+Download RStudio Desktop. Select an isntaller based on your OS and then install.
+2.3 RStudio Layout
+The RStudio interface consists of several windows 
+* Bottom left: command window. Here you can type simple commands after the “>” prompt and R will then execute your command. This is the most important window, because this is where R actually does stuff.
+* Top left: script window. Collections of commands (scripts) can be edited and saved. When you don’t get this window, you can open it with [File] – [New] – [R script]. Just typing a command in the editor window is not enough, it has to get into the command window before R executes the command. If you want to run a line from the script window (or the whole script), you can click Run or press CTRL+ENTER to send it to the command window.
+* Top right: workspace / history window. In the workspace window you can see which data and values R has in its memory. You can view and edit the values by clicking on them. The history window shows what has been typed before.
+* Bottom right: files / plots / packages / help window. Here you can open files, view plots (also previous plots), install and load packages or use the help function.
+You can change the size of the windows by dragging the grey bars between the windows.
+Variable, data types in R
+A variable provides us with named storage that our programs can manipulate. A variable in R can store an atomic vector, group of atomic vectors or a combination of many R objects. A valid variable name consists of letters, numbers and the dot or underline characters. The variable name starts with a letter or the dot not   followed by a number. Variable Name Validity Reason
+
+Variable NameValidityReasonvar_name2.validHas letters, numbers, dot and underscorevar_name%InvalidHas the character '%'. Only dot(.) and underscore allowed.2var_nameinvalidStarts with a number
+.var_name,
+var.namevalidCan start with a dot(.) but the dot(.)should not be followed by a number..2var_nameinvalidThe starting dot is followed by a number making it invalid._var_nameinvalidStarts with _ which is not valid
+
+Variable Assignment
+The variables can be assigned values using leftward, rightward and equal to operator. The values of the variables can be printed using print() or cat() function. The cat() function combines multiple items into a continuous print output.
+# Assignment using equal operator.
+var.1 = c(0,1,2,3)           
+ 
+# Assignment using leftward operator.
+var.2 <- c("learn","R")   
+ 
+# Assignment using rightward operator.   
+c(TRUE,1) -> var.3           
+ 
+print(var.1)
+cat ("var.1 is ", var.1 ,"\n")
+cat ("var.2 is ", var.2 ,"\n")
+cat ("var.3 is ", var.3 ,"\n")
+When we execute the above code, it produces the following result ?
+[1] 0 1 2 3
+var.1 is  0 1 2 3 
+var.2 is  learn R 
+var.3 is  1 1 
+Note ? The vector c(TRUE,1) has a mix of logical and numeric class. So logical class is coerced to numeric class making TRUE as 1
+Data Type of a Variable
+In R, a variable itself is not declared of any data type, rather it gets the data type of the R - object assigned to it. So R is called a dynamically typed language, which means that we can change a variable’s data type of the same variable again and again when using it in a program.
+var_x <- "Hello"
+cat("The class of var_x is ",class(var_x),"\n")
+ 
+var_x <- 34.5
+cat("  Now the class of var_x is ",class(var_x),"\n")
+ 
+var_x <- 27L
+cat("   Next the class of var_x becomes ",class(var_x),"\n")
+When we execute the above code, it produces the following result ?
+The class of var_x is  character 
+   Now the class of var_x is  numeric 
+      Next the class of var_x becomes  integer
+
+
+
+
+Finding Variables
+To know all the variables currently available in the workspace we use the ls() function. Also the ls() function can use patterns to match the variable names.
+print(ls())
+When we execute the above code, it produces the following result ?
+[1] "my var"     "my_new_var" "my_var"     "var.1"      
+[5] "var.2"      "var.3"      "var.name"   "var_name2."
+[9] "var_x"      "varname" 
+Note ? It is a sample output depending on what variables are declared in your environment.
+The ls() function can use patterns to match the variable names.
+
+# List the variables starting with the pattern "var".
+print(ls(pattern = "var"))   
+When we execute the above code, it produces the following result ?
+[1] "my var"     "my_new_var" "my_var"     "var.1"      
+[5] "var.2"      "var.3"      "var.name"   "var_name2."
+[9] "var_x"      "varname"    
+The variables starting with dot(.) are hidden, they can be listed using "all.names = TRUE" argument to ls() function.
+print(ls(all.name = TRUE))
+When we execute the above code, it produces the following result ?
+[1] ".cars"        ".Random.seed" ".var_name"    ".varname"     ".varname2"   
+[6] "my var"       "my_new_var"   "my_var"       "var.1"        "var.2"        
+[11]"var.3"        "var.name"     "var_name2."   "var_x"  
+Deleting Variables
+Variables can be deleted by using the rm() function. Below we delete the variable var.3. On printing the value of the variable error is thrown.
+rm(var.3)
+print(var.3)
+When we execute the above code, it produces the following result ?
+[1] "var.3"
+Error in print(var.3) : object 'var.3' not found
+All the variables can be deleted by using the rm() and ls() function together.
+rm(list = ls())
+print(ls())
+When we execute the above code, it produces the following result ?
+character(0)
+
+
+Experiment 2
+Week 2
+2a) Implement R script to show the usage of various operators available in R language
+An operator is a symbol that tells the compiler to perform specific mathematical or logical manipulations. R language is rich in built-in operators and provides following types of operators.
+Types of Operators
+We have the following types of operators in R programming ?
+* Arithmetic Operators
+* Relational Operators
+* Logical Operators
+* Assignment Operators
+# R program to illustrate the use of Arithmetic operators
+vec1 <- c(0, 2)
+vec2 <- c(2, 3)
+# Performing operations on Operands
+cat ("Addition of vectors :", vec1 + vec2, "\n")
+cat ("Subtraction of vectors :", vec1 - vec2, "\n")
+cat ("Multiplication of vectors :", vec1 * vec2, "\n")
+cat ("Division of vectors :", vec1 / vec2, "\n")
+cat ("Modulo of vectors :", vec1 %% vec2, "\n")
+cat ("Power operator :", vec1 ^ vec2)
+Output: 
+Addition of vectors : 2 5 
+Subtraction of vectors : -2 -1 
+Multiplication of vectors : 0 6 
+Division of vectors : 0 0.6666667 
+Modulo of vectors : 0 2 
+Power operator : 0 8
+# R program to illustrate the use of Logical operators
+vec1 <- c(0,2)
+vec2 <- c(TRUE,FALSE)
+# Performing operations on Operands
+cat ("Element wise AND :", vec1 & vec2, "\n")
+cat ("Element wise OR :", vec1 | vec2, "\n")
+cat ("Logical AND :", vec1 && vec2, "\n")
+cat ("Logical OR :", vec1 || vec2, "\n")
+cat ("Negation :", !vec1)
+Output: 
+Element wise AND : FALSE FALSE 
+Element wise OR : TRUE TRUE 
+Logical AND : FALSE 
+Logical OR : TRUE 
+Negation : TRUE FALSE
+# R program to illustrate the use of Relational operators
+vec1 <- c(0, 2)
+vec2 <- c(2, 3)
+# Performing operations on Operands
+cat ("Vector1 less than Vector2 :", vec1 < vec2, "\n")
+cat ("Vector1 less than equal to Vector2 :", vec1 <= vec2, "\n")
+cat ("Vector1 greater than Vector2 :", vec1 > vec2, "\n")
+cat ("Vector1 greater than equal to Vector2 :", vec1 >= vec2, "\n")
+cat ("Vector1 not equal to Vector2 :", vec1 != vec2, "\n")Output: 
+Vector1 less than Vector2 : TRUE TRUE 
+Vector1 less than equal to Vector2 : TRUE TRUE 
+Vector1 greater than Vector2 : FALSE FALSE 
+Vector1 greater than equal to Vector2 : FALSE FALSE 
+Vector1 not equal to Vector2 : TRUE TRUE 
+# R program to illustrate the use of Assignment operators
+vec1 <- c(2:5)
+c(2:5) ->> vec2
+vec3 <<- c(2:5)
+vec4 = c(2:5)
+c(2:5) -> vec5
+ # Performing operations on Operands
+cat ("vector 1 :", vec1, "\n")
+cat("vector 2 :", vec2, "\n")
+cat ("vector 3 :", vec3, "\n")
+cat("vector 4 :", vec4, "\n")
+cat("vector 5 :", vec5)Output: 
+vector 1 : 2 3 4 5 
+vector 2 : 2 3 4 5 
+vector 3 : 2 3 4 5 
+vector 4 : 2 3 4 5 
+vector 5 : 2 3 4 5
+
+
+2b). Implement R script to read person‘s age from keyboard and display whether he is eligible for voting or not.
+{
+  age <- as.integer(readline(prompt = "Enter your age :"))
+ 
+  if (age >= 18) {
+    print(paste("You are valid for voting :", age))
+  } else{
+    print(paste("You are not valid for voting :", age))
+  } 
+}
+output:
+ Enter your age :48
+[1] "You are valid for voting : 48"
+
+
+2c) Implement R script to find biggest number between two numbers.
+{
+    x <- as.integer(readline(prompt = "Enter first number :"))
+    y <- as.integer(readline(prompt = "Enter second number :"))
+
+    if (x > y) {
+      print(paste("Greatest is :", x))
+    } else{
+      print(paste("Greatest is :", y))
+    }
+
+output :
+Enter first number :2
+Enter second number :22
+[1] "Greatest is : 22"
+
+
+2d) Implement R script to check the given year is leap year or not
+year = as.integer(readline(prompt="Enter a year: "))
+if((year %% 4) == 0) {
+    if((year %% 100) == 0) {
+        if((year %% 400) == 0) {
+            print(paste(year,"is a leap year"))
+        } else {
+            print(paste(year,"is not a leap year"))
+        }
+    } else {
+        print(paste(year,"is a leap year"))
+    }
+} else {
+    print(paste(year,"is not a leap year"))
+}
+output:
+Enter a year: 2011
+[1] "2011 is not a leap year"
+Enter a year: 2004
+[1] "2004 is a leap year
+                              
+
+
+      Experiment 3
+week3
+3a)Implement R Script to create a list.
+Creating a List
+Lists in R can be created by placing the sequence inside the list() function.
+# Create a list containing strings, numbers, vectors and a logical values.
+list_data <- list("Red", "Green", c(21,32,11), TRUE, 51.23, 119.1)
+print(list_data)
+Output:
+[[1]] [1] "Red", [[2]] [1] "Green", [[3]] [1] 21 32 11, [[4]] [1] TRUE, [[5]] [1], 51.23, [[6]], [1] 119.1
+3b) Implement R Script to access elements in the list.
+# Create a list containing a vector, a matrix and a list.
+list_data <- list(c("Jan","Feb","Mar"), matrix(c(3,9,5,1,-2,8), nrow = 2),
+   list("green",12.3))
+# Give names to the elements in the list.
+names(list_data) <- c("1st Quarter", "A_Matrix", "A Inner list")
+# Access the first element of the list.
+print(list_data[1])
+# Access the thrid element. As it is also a list, all its elements will be printed.
+print(list_data[3])
+# Access the list element using the name of the element.
+print(list_data$A_Matrix)
+Output:
+$`1st_Quarter`,[1] "Jan" "Feb" "Mar", $A_Inner_list, $A_Inner_list[[1]], [1] "green", $A_Inner_list[[2]], [1] 12.3, [,1] [,2] [,3], [1,] 3 5 -2, [2,] 9 1 8
+
+
+
+3c) Implement R Script to merge two or more lists. Implement R Script to perform matrix  operation
+# Create two lists.
+list1 <- list(1,2,3)
+list2 <- list("Sun","Mon","Tue")
+# Merge the two lists.
+merged.list <- c(list1,list2)
+# Print the merged list.
+print(merged.list)
+Output:
+[[1]], [1] 1, [[2]], [1] 2, [[3]], [1] 3, [[4]][1] "Sun", [[5]] [1] "Mon", [[6]] [1] "Tue"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      Experiment 4
+week4
+4a) Implement R script to perform following operations
+various operations on vectors
+# Use of 'c' function
+# to combine the values as a vector.
+# by default the type will be double
+X <- c(1, 4, 5, 2, 6, 7)
+print('using c function')
+print(X)
+# using the seq() function to generate
+# a sequence of continuous values
+# with different step-size and length.
+# length.out defines the length of vector.
+Y <- seq(1, 10, length.out = 5)
+print('using seq() function')
+print(Y)
+# using ':' operator to create
+# a vector of continuous values.
+Z <- 5:10
+print('using colon')
+print(Y)
+Output:
+using c function 1 4 5 2 6 7
+using seq function 1.00  3.25  5.50  7.75 10.00
+using colon 5  6  7  8  9 10
+
+Accessing Vector Elements
+# Accessing elements using the position number.
+X <- c(2, 5, 8, 1, 2)
+print('using Subscript operator')
+print(X[2])
+# Accessing specific values by passing
+# a vector inside another vector.
+Y <- c(4, 5, 2, 1, 7)
+print('using c function')
+print(Y[c(4, 1)])
+# Logical indexing
+Z <- c(5, 2, 1, 4, 4, 3)
+print('Logical indexing')
+print(Z[Z>3])
+Output:
+using Subscript operator 5
+using c function 1 4
+Logical indexing 5 4 4
+Vector Manipulation
+Vectors can be modified using different indexing variations which are mentioned in the below code:
+# Creating a vector
+X <- c(2, 5, 1, 7, 8, 2) 
+# modify a specific element
+X[3] <- 11
+print('Using subscript operator')
+print(X)
+# Modify using different logics.
+X[X>9] <- 0
+print('Logical indexing')
+print(X)
+# Modify by specifying the position or elements.
+X <- X[c(5, 2, 1)]
+print('using c function')
+print(X)
+Output: 
+Using subscript operator 2  5 11  7  8  2
+Logical indexing 2 5 0 7 8 2
+using c function 8 5 2
+Deleting a vector
+Vectors can be deleted by reassigning them as NULL. To delete a vector we use the NULL operator. 
+# Creating a vector
+X <- c(5, 2, 1, 6)
+# Deleting a vector
+X <- NULL
+print('Deleted vector')
+print(X)
+Deleted vector NULL
+Sorting of Vectors
+For sorting we use the sort() function which sorts the vector in ascending order by default. 
+# Creating a Vector
+X <- c(5, 2, 5, 1, 51, 2)
+# Sort in ascending order
+A <- sort(X)
+print('sorting done in ascending order')
+print(A)
+# sort in descending order.
+B <- sort(X, decreasing = TRUE)
+print('sorting done in descending order')
+print(B)
+Output: 
+sorting done in ascending order 1  2  2  5  5 51
+sorting done in descending order 51  5  5  2  2  1
+4b) Finding the sum and average of given numbers using arrays.
+To find the sum of all array elements in R, we can use Reduce function with plus sign. For Example, if we have an array called ARRAY and we want to find the sum of all values in this array then we can use the command Reduce("+",ARRAY).
+Example 1
+To find the sum of all array elements in R use the snippet given below ?
+Array1<-array(1:100,c(5,4,5))
+Array1
+, , 1
+If you execute the above given snippet, it generates the following Output ?
+[,1] [,2] [,3] [,4]
+[1,] 1 6 11 16
+[2,] 2 7 12 17
+[3,] 3 8 13 18
+[4,] 4 9 14 19
+[5,] 5 10 15 20
+To find the sum of all elements in Array1 on the above created data frame, add the following code to the above snippet ?
+Array1<-array(1:100,c(5,4,5))
+Reduce("+",Array1)
+Output
+If you execute all the above given snippets as a single program, it generates the following Output ?
+
+[1] 5050
+
+Average in R Programming
+colMeans() function in R Language is used to compute the mean of each column of a matrix or array
+Syntax: colMeans(x, dims = 1)
+Parameters:
+x: array of two or more dimensions, containing numeric, complex, integer or logical values, or a numeric data frame
+dims: integer value, which dimensions are regarded as ‘columns’ to sum over. It is over dimensions 1:dims.
+# R program to illustrate
+# colMeans function
+# Initializing a 3D array
+x <- array(1:12, c(2, 3, 3))
+# Getting the array representation
+X
+# Calling the colMeans() function
+# for dims = 1, x[, 1, 1], x[, 2, 1], x[, 3, 1],
+# x[, 1, 2] ... are columns
+colMeans(x, dims = 1)
+# for dims = 2, x[,,1], x[,,2], x[,,3]
+# are columns
+colMeans(x, dims = 2)
+Output:
+,, 1
+     [, 1] [, 2] [, 3]
+[1, ]    1    3    5
+[2, ]    2    4    6,, 2
+     [, 1] [, 2] [, 3]
+[1, ]    7    9   11
+[2, ]    8   10   12,, 3
+     [, 1] [, 2] [, 3]
+[1, ]    1    3    5
+[2, ]    2    4    6
+     [, 1] [, 2] [, 3]
+[1, ]  1.5  7.5  1.5
+[2, ]  3.5  9.5  3.5
+[3, ]  5.5 11.5  5.5
+[1] 3.5 9.5 3.5
+4c). To display elements of list in reverse order
+x <- list(5, 25, 125)
+result = rev(x)
+print(result)
+
+output:
+[[1]]
+[1]125
+[[2]]
+[1]25
+[[3]]
+[1]5
+4d) Finding the minimum and maximum elements in the array
+x = c(10, 20, 30, 25, 9, 26)
+print("Original Vectors:")
+print(x)
+print("Maximum value of the above Vector:")
+print(max(x))
+print("Minimum value of the above Vector:")
+print(min(x))
+Output:
+[1] "Original Vectors:"
+[1] 10 20 30 25  9 26
+[1] "Maximum value of the above Vector:"
+[1] 30
+[1] "Minimum value of the above Vector:"
+[1] 9    
+
+
+      EXPERIMENT 5
+ week5
+5a) Implement R Script to perform various operations on matrices
+# R program for matrix addition
+# using '+' operator
+# Creating 1st Matrix
+B = matrix(c(1, 2 + 3i, 5.4, 3, 4, 5), nrow = 2, ncol = 3)
+# Creating 2nd Matrix
+C = matrix(c(2, 0i, 0.1, 3, 4, 5), nrow = 2, ncol = 3)
+# Printing the resultant matrix
+print(B + C)
+Output:
+     [,1]   [,2]  [,3]
+[1,] 3+0i 5.5+0i  8+0i
+[2,] 2+3i 6.0+0i 10+0i
+# R program for matrix addition
+# using '-' operator
+# Creating 1st Matrix
+B = matrix(c(1, 2 + 3i, 5.4, 3, 4, 5), nrow = 2, ncol = 3)
+# Creating 2nd Matrix
+C = matrix(c(2, 0i, 0.1, 3, 4, 5), nrow = 2, ncol = 3)
+# Printing the resultant matrix
+print(B - C)
+Output:
+      [,1]   [,2] [,3]
+[1,] -1+0i 5.3+0i 0+0i
+[2,]  2+3i 0.0+0i 0+0i
+# R program for matrix multiplication
+# using '*' operator
+# Creating 1st Matrix
+B = matrix(c(1, 2 + 3i, 5.4), nrow = 1, ncol = 3)
+# Creating 2nd Matrix
+C = matrix(c(2, 1i, 0.1), nrow = 1, ncol = 3)
+# Printing the resultant matrix
+print (B * C)
+Output:
+     [,1]  [,2]    [,3]
+[1,] 2+0i -3+2i 0.54+0i
+# R program for matrix division
+# using '/' operator
+# Creating 1st Matrix
+B = matrix(c(4, 6i, -1), nrow = 1, ncol = 3)
+# Creating 2nd Matrix
+C = matrix(c(2, 2i, 0), nrow = 1, ncol = 3)
+# Printing the resultant matrix
+print (B / C)
+Output:
+     [,1] [,2]      [,3]
+[1,] 2+0i 3+0i -Inf+NaNi
+5b) Implement R Script to extract the data from dataframes.
+# Create the data frame.
+emp.data <- data.frame(
+   emp_id = c (1:5), 
+   emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+
+   salary = c(623.3,515.2,611.0,729.0,843.25), 
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+   stringsAsFactors = FALSE
+)
+# Print the data frame.			
+print(emp.data)
+When we execute the above code, it produces the following result ?
+ emp_id    emp_name     salary     start_date
+1     1     Rick        623.30     2012-01-01
+2     2     Dan         515.20     2013-09-23
+3     3     Michelle    611.00     2014-11-15
+4     4     Ryan        729.00     2014-05-11
+5     5     Gary        843.25     2015-03-27
+Get the Structure of the Data Frame
+The structure of the data frame can be seen by using str() function.
+
+# Create the data frame.
+emp.data <- data.frame(
+   emp_id = c (1:5), 
+   emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+
+   salary = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+   stringsAsFactors = FALSE
+)
+# Get the structure of the data frame.
+str(emp.data)
+When we execute the above code, it produces the following result ?
+'data.frame':   5 obs. of  4 variables:
+ $ emp_id    : int  1 2 3 4 5
+ $ emp_name  : chr  "Rick" "Dan" "Michelle" "Ryan" ...
+ $ salary    : num  623 515 611 729 843
+ $ start_date: Date, format: "2012-01-01" "2013-09-23" "2014-11-15" "2014-05-11" ...
+Summary of Data in Data Frame
+The statistical summary and nature of the data can be obtained by applying summary() function.
+# Create the data frame.
+emp.data <- data.frame(
+   emp_id = c (1:5), 
+   emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+   salary = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+   stringsAsFactors = FALSE
+)
+# Print the summary.
+print(summary(emp.data))  
+When we execute the above code, it produces the following result –
+
+     emp_id    emp_name             salary        start_date        
+ Min.   :1   Length:5           Min.   :515.2   Min.   :2012-01-01  
+ 1st Qu.:2   Class :character   1st Qu.:611.0   1st Qu.:2013-09-23  
+ Median :3   Mode  :character   Median :623.3   Median :2014-05-11  
+ Mean   :3                      Mean   :664.4   Mean   :2014-01-14  
+ 3rd Qu.:4                      3rd Qu.:729.0   3rd Qu.:2014-11-15  
+ Max.   :5                      Max.   :843.2   Max.   :2015-03-27 
+Extract Data from Data Frame
+Extract specific column from a data frame using column name.
+# Create the data frame.
+emp.data <- data.frame(
+   emp_id = c (1:5),
+   emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+   salary = c(623.3,515.2,611.0,729.0,843.25),
+   start_date = as.Date(c("2012-01-01","2013-09-23","2014-11-15","2014-05-11",
+      "2015-03-27")),
+   stringsAsFactors = FALSE
+)
+# Extract Specific columns.
+result <- data.frame(emp.data$emp_name,emp.data$salary)
+print(result)
+When we execute the above code, it produces the following result ?
+  emp.data.emp_name emp.data.salary
+1              Rick          623.30
+2               Dan          515.20
+3          Michelle          611.00
+4              Ryan          729.00
+5              Gary          843.25
+Extract the first two rows and then all columns
+# Create the data frame.
+emp.data <- data.frame(
+   emp_id = c (1:5),
+   emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+   salary = c(623.3,515.2,611.0,729.0,843.25),
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+   stringsAsFactors = FALSE
+)
+# Extract first two rows.
+
+result <- emp.data[1:2,]
+print(result)
+When we execute the above code, it produces the following result ?
+  emp_id    emp_name   salary    start_date
+       1     Rick      623.3     2012-01-01
+       2     Dan       515.2     2013-09-23
+
+
+5c) Write R script to display file contents.
+# R program to read one line at a time
+# Import the readr library
+library(readr)
+# read_lines() to read one line at a time
+myData = read_lines("geeksforgeeks.txt", n_max = 1)
+print(myData)
+# read_lines() to read two line at a time
+myData = read_lines("geeksforgeeks.txt", n_max = 2)
+print(myData)
+Output: 
+[1] "A computer science portal for geeks."
+[1] "A computer science portal for geeks."         
+[2] "Geeksforgeeks is founded by Sandeep Jain Sir."
+# R program to read the whole file
+# Import the readr library
+library(readr)
+# read_file() to read the whole file
+myData = read_file("geeksforgeeks.txt")
+print(myData)
+Output:
+[1] “A computer science portal for geeks.\r\nGeeksforgeeks is founded by Sandeep Jain Sir.\r\nI am an intern at this amazing platform.”
+5d) Write R script to copy file contents from one file to another
+
+Step 3: Copy a file from one folder to another.
+To copy a file from one folder to another, use the file.copy() method. The complete code is below.
+dir.create("newdir")
+
+newDirPath <- "newdir"
+
+files <- c("a.txt")
+
+file.create(files)
+
+newFilePath <- "a.txt"
+
+file.copy(newFilePath, newDirPath)
+
+Output
+[1] TRUE
+[1] TRUE
+The first TRUE is for successfully creating a file and the second TRUE is for successfully copying the file.If it returns FALSE, that means there is s some problem while copying the files.R base functions for importing data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment:- 6
+
+ week 6
+6a) Write an R script to find basic descriptive statistics using summary, str, quartile function on mtcars & cars datasets.
+>mtcars
+mpg                           cyl      dis  php     drat  wtq   sec	vs  am 	       gear 	                     
+Mazda RX4	 21.0	6 160.0 110 3.90 2.620 16.46 0 1	4
+4
+Mazda RX4 Wag	 21.0	6 160.0 110 3.90 2.875 17.02 0 1	4
+4
+Datsun 710	 22.8	4 108.0 93 3.85 2.320 18.61 1 1	4
+1
+Hornet 4 Drive	 21.4	6 258.0 110 3.08 3.215 19.44 1 0	3
+1
+Hornet Sportabout	  18.7	8 360.0 175 3.15 3.440 17.02 0 0	3
+2
+Valiant	18.1	6 225.0 105 2.76 3.460 20.22 1 0	3
+1
+Duster 360	14.3	8 360.0 245 3.21 3.570 15.84 0 0	3
+4
+Merc 240D	24.4	4 146.7 62 3.69 3.190 20.00 1 0	4
+2
+Merc 230	22.8	4 140.8 95 3.92 3.150 22.90 1 0	4
+2
+Merc 280	19.2	6 167.6 123 3.92 3.440 18.30 1 0	4
+4
+Merc 280C	17.8	6 167.6 123 3.92 3.440 18.90 1 0	4
+4
+Merc 450SE	16.4	8 275.8 180 3.07 4.070 17.40 0 0	3
+3
+Merc 450SL	17.3	8 275.8 180 3.07 3.730 17.60 0 0	3
+3
+Merc 450SLC	15.2	8 275.8 180 3.07 3.780 18.00 0 0	3
+3
+Cadillac Fleetwood    10.4	8 472.0 205 2.93 5.250 17.98 0 0	3
+4
+Lincoln Continental       10.4	8 460.0 215 3.00 5.424 17.82   0   0	             3
+4
+Chrysler Imperial          	14.7	8 440.0 230 3.23 5.345 17.42 0 0	3
+4
+Fiat 128                     32.4	4 78.7 66 4.08 2.200 19.47 1 1	4
+1
+Honda Civic	30.4	4 75.7 52 4.93 1.615 18.52 1 1	4
+2
+Toyota Corolla	33.9	4 71.1 65 4.22 1.835 19.90 1 1	4
+1
+Toyota Corona	21.5	4 120.1 97 3.70 2.465 20.01 1 0	3
+
+
+1
+Dodge Challenger	 15.5	8 318.0 150 2.76 3.520 16.87 0 0	3
+
+2
+AMC Javelin	15.2	8 304.0 150 3.15 3.435 17.30 
+
+
+13.3	8 350.0 245 3.73 3.840 15.4100319.2	8 400.0 175 3.08 3.845 17.05003
+27.3
+4
+79.0
+66
+4.08
+1.935
+18.90
+1
+1
+426.04120.3914.432.14016.7001530.4495.11133.771.51316.9011515.88351.02644.223.17014.5001519.76145.01753.622.77015.5001515.08301.03353.543.57014.6001521.44121.01094.112.78018.60114
+Camaro Z28 4
+Pontiac Firebird 2
+Fiat X1-9 1
+Porsche 914-2
+2
+Lotus Europa 2
+Ford Pantera L 4
+Ferrari Dino 6
+Maserati Bora 8
+Volvo 142E 2
+>summary(mtcars)
+
+mpgcyldisphp	drat
+Min.:10.40	Min.		:4.000	Min.		: 71.1	Min.: 52.0	Min.:2.760 1st Qu.:15.43	1st Qu.:4.000	1st Qu.:120.8	1st Qu.: 96.5	1st
+Qu.:3.080
+Median :19.20	Median :6.000	Median :196.3	Median :123.0	Median
+:3.695
+Mean	:20.09	Mean	:6.188	Mean	:230.7	Mean	:146.7	Mean
+:3.597
+ 3rd Qu.:22.80	3rd Qu.:8.000	3rd Qu.:326.0	3rd Qu.:180.0	3rd Qu.:3.920
+Max.	:33.90	Max.	:8.000	Max.	:472.0	Max.	:335.0	Max.
+:4.930
+wtqsec	vs	am	gear
+Min.:1.513	Min.	:14.50	Min.	:0.0000	Min.	:0.0000	Min.
+:3.000
+ 1st Qu.:2.581	1st Qu.:16.89	1st Qu.:0.0000	1st Qu.:0.0000	1st Qu.:3.000
+Median :3.325	Median :17.71	Median :0.0000	Median :0.0000
+Median :4.000
+Mean	:3.217	Mean	:17.85	Mean	:0.4375	Mean	:0.4062
+Mean	:3.688
+ 3rd Qu.:3.610	3rd Qu.:18.90	3rd Qu.:1.0000	3rd Qu.:1.0000	3rd Qu.:4.000
+Max.	:5.424	Max.	:22.90	Max.	:1.0000	Max.	:1.0000
+Max.	:5.000
+carb Min.:1.000
+1st Qu.:2.000
+Median :2.000
+Mean :2.812 3rd Qu.:4.000 Max. :8.000
+>str(mtcars)
+‘data.frame': 32 obs. of  11 variables:
+$ mpg :num 21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+$cyl :num6 6 4 6 8 6 8 4 4 6 ...$disp: num160 160 108 258 360 ...$hp :num110 110 93 110 175 105 245 62 95 123 ...$drat: num3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.923.92...$wt :num2.62 2.88 2.32 3.21 3.44 ...$qsec: num16.5 17 18.6 19.4 17 ...$vs :num0 0 1 1 0 1 0 1 1 1 ...$am :num1 1 1 0 0 0 0 0 0 0 ...$gear: num4 4 4 3 3 3 34 4 4 ...$carb: num4 4 1 1 2 1 42 2 4 ...
+>quantile(mtcars$mpg)
+
+0%	25%	50%	75%	100%
+10.400 15.425 19.200 22.800 33.900
+>cars speed 
+
+
+
+
+
+
+1422410374472258166910710188102691034101117111128121214131220141224151228161326171334181334191346201426211436221460231480241520251526261554271632281640291732301740311750321842331856341876351884361936 dist
+  
+
+
+
+
+
+3719463819683920324020484120524220564320644422664523544624704724924824934924120502585	
+
+
+>summary(cars)
+
+speeddist
+Min.: 4.0	Min.	: 2.00
+1st Qu.:12.0	1st Qu.: 26.00
+Median :15.0	Median : 36.00
+Mean :15.4 Mean   : 42.98 3rd Qu.:19.0 3rd Qu.: 56.00 Max. :25.0 Max. :120.00
+
+>class(cars)
+[1] "data.frame"
+
+>dim(cars) [1] 50 2
+>str(cars)
+
+'data.frame': 50 obs. of  2 variables:
+$ speed: num 4 4 7 7 8 9 10 10 10 11 ...
+$ dist :num 2 10 4 22 16 10 18 26 34 17 ..
+
+>quantile(cars$speed)
+
+0%25%50%   75%  100%412 1519    25
+6b). Write an R script to find subset of dataset by using subset (), aggregate () functions on iris dataset.
+
+>aggregate(. ~ Species, data = iris, mean)
+Output:
+Species Sepal.LengthSepal.WidthPetal.LengthPetal.Width
+1Setosa5.0063.4281.4620.2462Versicolor5.9362.7704.2601.3263Virginica6.5882.9745.5522.026>subset(iris,iris$Sepal.Length==5.0)
+
+
+Output:
+Sepal.LengthSepal.WidthPetal.LengthPetal.WidthSpecies
+553.61.40.2Setosa853.41.50.2Setosa2653.01.60.2Setosa2753.41.60.4Setosa3653.21.20.2Setosa4153.51.30.3Setosa4453.51.60.6Setosa5053.31.40.2Setosa6152.03.51.0Versicolor9452.33.31.0versicolor
+
+
+
+Ways of Subsetting Data in R
+R is capable of pulling the desired portion of data. Subsetting a data frame in R is the most essential part of data manipulation. We will go through subsetting data in detail.
+In this part, we will use iris data set available in R. Firstly, let’s know the iris data we will work on.
+class(iris)
+## [1] "data.frame" 
+dim(iris)
+## [1] 150   5
+1. Subset Using Brackets by Selecting Rows and Columns
+In this part, we use brackets by selecting rows and colums. Firstly, we pull the first three rows of data. Then, we select the first three rows and the columns from third to fifth.
+iris[c(1:3),]
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+ 
+iris[c(1:3),c(3:5)]
+
+
+##   Petal.Length Petal.Width Species
+## 1          1.4         0.2  setosa
+## 2          1.4         0.2  setosa
+## 3          1.3         0.2  setosa
+
+2. Subset Using Brackets by Excluding Rows and Columns
+Also, we can fin iris[-c(4:150),]
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+
+
+
+
+ 
+iris[-c(4:150),-c(1:2)]
+##   Petal.Length Petal.Width Species
+## 1          1.4         0.2  setosa
+## 2          1.4         0.2  setosa	
+## 3          1.3         0.2  setosad same subset by excluding the rows and columns.
+
+3. Subset Using Brackets with which() Function
+We can select any subset of data in R based on condition with which() function. For example, let’s select setosa species with their sepal length larger than 5.6. Also, we can obtain the columns from third to fifth of the same subset.
+iris[which(iris$Species=="setosa"&iris$Sepal.Length>5.6),]
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 15          5.8         4.0          1.2         0.2  setosa
+## 16          5.7         4.4          1.5         0.4  setosa
+## 19          5.7         3.8          1.7         0.3  setosa
+ 
+iris[which(iris$Species=="setosa"&iris$Sepal.Length>5.6), 3:5]
+##    Petal.Length Petal.Width Species
+## 15          1.2         0.2  setosa
+## 16          1.5         0.4  setosa
+## 19          1.7         0.3  setosa
+4. Subset Data with subset() Function
+We can select same subsets with subset() fuction.
+subset(iris, Species=="setosa"&Sepal.Length>5.6)
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 15          5.8         4.0          1.2         0.2  setosa
+## 16          5.7         4.4          1.5         0.4  setosa
+## 19          5.7         3.8          1.7         0.3  setosa
+ 
+subset(iris, Species=="setosa"&Sepal.Length>5.6, 3:5)
+##    Petal.Length Petal.Width Species
+## 15          1.2         0.2  setosa
+
+## 16          1.5         0.4  setosa
+## 19          1.7         0.3  setosa
+5. Subset Data in Combination of select() and filter() Functions
+We can obtain same subsets using filter() and select() functions available in dplyr package (Wickham et al., 2020).
+library(dplyr)
+filter(iris, Species=="setosa"&Sepal.Length>5.6)
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.8         4.0          1.2         0.2  setosa
+## 2          5.7         4.4          1.5         0.4  setosa
+## 3          5.7         3.8          1.7         0.3  setosa
+
+select(filter(iris, Species=="setosa"&Sepal.Length>5.6), 3:5)
+##   Petal.Length Petal.Width Species
+## 1          1.2         0.2  setosa
+## 2          1.5         0.4  setosa
+## 3          1.7         0.3  setosa
+6. Subset a Random Sample with sample() Function
+Lastly, we will learn how to sample a subset randomly from a data frame with sample() function.
+set.seed(123) # For reproducibility of same result
+iris[sample(1:nrow(iris), 3, replace = FALSE),]
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 44           5.0         3.5          1.6         0.6     setosa
+## 118          7.7         3.8          6.7         2.2  virginica
+## 61           5.0         2.0          3.5         1.0 versicolor
+ 
+set.seed(123) # For reproducibility of same result
+iris[sample(1:nrow(iris), 3, replace = FALSE), 3:5]
+##     Petal.Length Petal.Width    Species
+## 44           1.6         0.6     setosa
+## 118          6.7         2.2  virginica
+## 61           3.5         1.0 versicolor
+
+
+
+
+
+
+
+
+Experiment 7
+ week7
+7a) Reading different types of data sets (.txt, .csv) from Web or disk and writing in file in specific disk location.
+Working with CSV files in R Programming
+input.csv
+id,name,salary,start_date,dept
+1,Rick,623.3,2012-01-01,IT
+2,Dan,515.2,2013-09-23,Operations
+3,Michelle,611,2014-11-15,IT
+4,Ryan,729,2014-05-11,HR
+5,Gary,843.25,2015-03-27,Finance
+6,Nina,578,2013-05-21,IT
+7,Simon,632.8,2013-07-30,Operations
+8,Guru,722.5,2014-06-17,Finance
+Reading a CSV File: Following is a simple example of read.csv() function to read a CSV file available in your current working directory –
+data <- read.csv("input.csv")
+print(data)
+When we execute the above code, it produces the following result –
+id, name, salary, start_date, dept
+1 1 Rick 623.30 2012-01-01 IT
+2 2 Dan 515.20 2013-09-23 Operations
+3 3 Michelle 611.00 2014-11-15 IT
+4 4 Ryan 729.00 2014-05-11 HR
+5 NA Gary 843.25 2015-03-27 Finance
+6 6 Nina 578.00 2013-05-21 IT
+7 7 Simon 632.80 2013-07-30 Operations
+8 8 Guru 722.50 2014-06-17 Finance
+Analyzing the CSV File
+By default the read.csv() function gives the output as a data frame. This can be easily checked as follows. Also we can check the number of columns and rows.
+data <- read.csv("input.csv")
+print(is.data.frame(data))
+print(ncol(data))
+print(nrow(data))
+When we execute the above code, it produces the following result ?
+[1] TRUE
+[1] 5
+[1] 8
+Writing into a CSV File
+R can create csv file form existing data frame. The write.csv() function is used to create the csv file. This file gets created in the working directory.
+# Create a data frame.
+print(max 
